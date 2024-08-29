@@ -40,20 +40,6 @@ The flutter_sbox plugin for Flutter
 ......
 ```
 
-- Application.java
-```java
-
-public class Application extends android.app.Application {
-    public static Application application;
-
-    @Override
-    public void onCreate() {
-        super.onCreate();
-        application = this;
-    }
-}
-```
-
 - MainActivity.java
 ```java
 
@@ -61,13 +47,30 @@ import android.os.Bundle;
 import com.billcoding.flutter_sbox.Sbox;
 import io.flutter.embedding.android.FlutterFragmentActivity;
 
-public class MainActivity extends FlutterFragmentActivity {
+public class AAA extends FlutterFragmentActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Sbox.init(Application.application, this, null);
+        Sbox.init(getApplication(), this, "yourapp");
+    }
+}
+```
+
+- MainActivity.kt
+```kotlin
+
+import android.os.Bundle
+import com.billcoding.flutter_sbox.Sbox
+import io.flutter.embedding.android.FlutterFragmentActivity
+
+class MainActivity : FlutterFragmentActivity() {
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+
+        Sbox.init(application, this, "yourapp")
     }
 }
 ```
