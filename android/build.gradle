@@ -16,8 +16,10 @@ buildscript {
 
 File aarFile = project.file("libs/libs-libcore-1.0.0.aar")
 if (!aarFile.exists()) {
-    exec {
+    exec{
         commandLine 'sh', '-c', 'git submodule update --init'
+    }
+    exec {
         commandLine 'sh', '-c', 'make -C ../libcore android && mv ../libcore/bin/libcore.aar libs/libs-libcore-1.0.0.aar'
     }
 }
