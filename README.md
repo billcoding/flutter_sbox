@@ -17,7 +17,7 @@ The flutter_sbox plugin for Flutter
 
 ## Getting Started
 
-### Androd setup
+### Android setup
 - AndroidManifest
 ```xml
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
