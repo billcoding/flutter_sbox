@@ -2,18 +2,30 @@
 
 The flutter_sbox plugin for Flutter
 
-## Flutter Plugin Methods
-- `FlutterSbox.startService` start vpn service (prepare -> vpn permission requests -> start vpn service)
-- `FlutterSbox.stopService` stop vpn service
-- `FlutterSbox.serviceStarted` returns the vpn service started?
-- `FlutterSbox.setOptionJson` set vpn service option json
-- `FlutterSbox.setConfigJson` set vpn service config json
+## Environment Dependencies
+- Go SDK 1.22.5+
+- make
+- protoc
+- gomobile & gobind
+- NDK
+
+## Supported Operating Systems
+- [x] Linux `amd64`
+- [x] Darwin `amd64, arm64`
+- [ ] Windows
 
 ## Supported Platforms
 - [x] Android
 - [ ] iOS
 - [ ] macOS
 - [ ] Windows
+
+## Flutter Plugin Methods
+- `FlutterSbox.startService` start vpn service (prepare -> vpn permission requests -> start vpn service)
+- `FlutterSbox.stopService` stop vpn service
+- `FlutterSbox.serviceStarted` returns the vpn service started?
+- `FlutterSbox.setOptionJson` set vpn service option json
+- `FlutterSbox.setConfigJson` set vpn service config json
 
 ## Getting Started
 
