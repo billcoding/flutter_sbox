@@ -16,11 +16,18 @@ buildscript {
 
 File aarFile = project.file("libs/libs-libcore-1.0.0.aar")
 if (!aarFile.exists()) {
-    exec{
+    exec {
         commandLine 'sh', '-c', 'git submodule update --init'
     }
     exec {
-        commandLine 'sh', '-c', 'make -C ../libcore android && mv ../libcore/bin/libcore.aar libs/libs-libcore-1.0.0.aar'
+        commandLine 'chmod', '+x', '../libcore/make'
+    }
+    exec {
+        workingDir file("../libcore")
+        commandLine './make', 'android'
+    }
+    exec {
+        commandLine 'sh', '-c', 'cp -rf ../libcore/bin/libcore.aar libs/libs-libcore-1.0.0.aar'
     }
 }
 
@@ -195,12 +202,13 @@ static String getFileMD5(File file) {
     } catch (NoSuchAlgorithmException e) {
         System.out.println(e);
     } finally {
+        // Ensure the input stream is closed
         try {
             if (input != null) {
                 input.close();
             }
         } catch (IOException e) {
-            System.out.println(e);
+            e.printStackTrace(); // Print stack trace if closing fails
         }
     }
 }
