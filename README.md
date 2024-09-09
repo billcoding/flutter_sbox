@@ -4,8 +4,7 @@ The flutter_sbox plugin for Flutter
 
 ## Environment Dependencies
 - Go SDK 1.22.5+
-- make
-- protoc
+- protoc(Optional)
 - gomobile & gobind
 - NDK
 
