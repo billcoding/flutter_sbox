@@ -31,7 +31,7 @@
 		7259A5652C8EDCA400F61F0E /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS17.5.sdk/usr/lib/libresolv.tbd; sourceTree = DEVELOPER_DIR; };
 		7259A5672C8EDD5500F61F0E /* Classes */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Classes; sourceTree = "<group>"; };
 		7259A5682C8EDD5500F61F0E /* Assets */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Assets; sourceTree = "<group>"; };
-		7259A5692C8EDD5500F61F0E /* flutter_sbox.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = flutter_sbox.podspec; sourceTree = "<group>"; };
+		7259A5692C8EDD5500F61F0E /* flutter_sbox.podspec */ = {isa = PBXFileReference; lastKnownFileType = text; path = flutter_sbox.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		7259A56A2C8EDE6900F61F0E /* Frameworks */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Frameworks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
