@@ -2,19 +2,18 @@
 //  PlatformInterfaceWrapper.swift
 //  flutter_sbox
 //
-//  Created by local on 2024/9/8.
+//  Created by local on 2024/9/10.
 //
 
-import Foundation
 import Libcore
 import NetworkExtension
 
 public class PlatformInterface: NSObject, LibboxPlatformInterfaceProtocol {
     private static let TAG: String = "Sbox/PlatformInterface"
-    private let tunnel: VPNTunnel
+    private let tunnel: VPNTunnelProvider
     private var networkSettings: NEPacketTunnelNetworkSettings?
     
-    init(_ tunnel: VPNTunnel) {
+    init(_ tunnel: VPNTunnelProvider) {
         self.tunnel = tunnel
     }
 
@@ -230,37 +229,4 @@ public class PlatformInterface: NSObject, LibboxPlatformInterfaceProtocol {
     func reset() {
         networkSettings = nil
     }
-}
-
-func runBlocking<T>(_ block: @escaping () async -> T) -> T {
-    let semaphore = DispatchSemaphore(value: 0)
-    let box = resultBox<T>()
-    Task.detached {
-        let value = await block()
-        box.result0 = value
-        semaphore.signal()
-    }
-    semaphore.wait()
-    return box.result0
-}
-
-func runBlocking<T>(_ tBlock: @escaping () async throws -> T) throws -> T {
-    let semaphore = DispatchSemaphore(value: 0)
-    let box = resultBox<T>()
-    Task.detached {
-        do {
-            let value = try await tBlock()
-            box.result = .success(value)
-        } catch {
-            box.result = .failure(error)
-        }
-        semaphore.signal()
-    }
-    semaphore.wait()
-    return try box.result.get()
-}
-
-private class resultBox<T> {
-    var result: Result<T, Error>!
-    var result0: T!
 }

@@ -1,25 +1,23 @@
 //
-//  Tester.swift
+//  Sbox.swift
 //  flutter_sbox
 //
-//  Created by local on 2024/9/8.
+//  Created by local on 2024/9/10.
 //
 
 import Combine
-import Foundation
 import Libcore
 import NetworkExtension
 
 public class Sbox {
     private static let TAG = "Sbox/Sbox"
     public static var localizedDescription: String = "Sbox"
-    private static var optionJson: String = Conf.defaultOptionJson
+    private static var optionJson: String = "" // Conf.defaultOptionJson
     private static var configJson: String = "{}"
     private static var allJson: String = "{}"
-    private static var vpnTunnel: VPNTunnel = .init()
     
     private static func debug(str: String) {
-        debugPrint("\(TAG) \(str)")
+      //  debugPrint("\(TAG) \(str)")
     }
     
     public static func start() {
@@ -32,13 +30,8 @@ public class Sbox {
         debug(str: "startService start")
         setAllJson(optionJson: getOptionJson(), configJson: getConfigJson())
         runBlocking {
-            await VPNManager.connect(with: allJson)
-            do {
-                try
-                    await vpnTunnel.startTunnel()
-            } catch {
-                // ignored
-            }
+            await VPN.connect()
+            //            await VPNManager.connect(with: allJson)
         }
         debug(str: "startService end")
     }
@@ -51,15 +44,7 @@ public class Sbox {
     
     public static func stopService() {
         debug(str: "stopService start")
-        VPNManager.disconnect()
-        runBlocking {
-            do {
-                try
-                await vpnTunnel.stopTunnel(with: NEProviderStopReason.none)
-            } catch {
-                // ignored
-            }
-        }
+        VPN.disconnect()
         debug(str: "stopService end")
     }
     

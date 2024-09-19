@@ -30,12 +30,14 @@ flutter_ios_podfile_setup
 target 'Runner' do
   use_frameworks!
   use_modular_headers!
-
   flutter_install_all_ios_pods File.dirname(File.realpath(__FILE__))
-  target 'RunnerTests' do
-    inherit! :search_paths
-  end
 end
+
+# target 'PacketTunnelProvider' do
+#   use_frameworks!
+#   use_modular_headers!
+#   pod 'flutter_sbox', :path => '.symlinks/plugins/flutter_sbox/ios'
+# end
 
 post_install do |installer|
   installer.pods_project.targets.each do |target|

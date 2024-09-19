@@ -2,23 +2,22 @@
 //  VPNService.swift
 //  flutter_sbox
 //
-//  Created by local on 2024/9/8.
+//  Created by local on 2024/9/10.
 //
 
-import Foundation
 import Libcore
 import NetworkExtension
 
-public class VPNTunnel: NEPacketTunnelProvider {
-    private let TAG: String = "Sbox/VPNTunnel"
+open class VPNTunnelProvider: NEPacketTunnelProvider {
+    private let TAG: String = "Sbox/VPNTunnelProvider"
     private var boxService: LibboxBoxService!
     private var initialized: Bool = false
-    private var started: Bool = false
     private var platformInterface: PlatformInterface!
+    private static var instance: VPNTunnelProvider!
     private func debug(str: String) {
         debugPrint("\(TAG) \(str)")
     }
-
+    
     private func startInit() {
         if !initialized {
             LibboxSetup(
@@ -30,25 +29,39 @@ public class VPNTunnel: NEPacketTunnelProvider {
             LibboxRedirectStderr(FilePath.cacheDirectory.appendingPathComponent("stderr.log").relativePath, nil)
         }
     }
-
-    override public func startTunnel(options: [String: NSObject]? = nil) async throws{
+    
+    override open func startTunnel(options: [String: NSObject]? = nil) async throws {
         startInit()
         if platformInterface == nil {
             platformInterface = PlatformInterface(self)
         }
-        boxService = LibboxNewService(Sbox.getAllJson(), platformInterface, nil)
+        var error: NSError?
+        boxService = LibboxNewService(Sbox.getAllJson(), platformInterface, &error)
+        debug(str: "startTunnel error: \(String(describing: error))")
         do {
             try boxService.start()
         } catch {
             debug(str: "startTunnel error: \(error.localizedDescription)")
         }
     }
-
+    
     override open func stopTunnel(with reason: NEProviderStopReason) async {
         debug(str: "stopTunnel called reason: \(reason)")
         stopService()
     }
-
+    
+    override open func sleep() async {
+        if let boxService {
+            boxService.pause()
+        }
+    }
+    
+    override open func wake() {
+        if let boxService {
+            boxService.wake()
+        }
+    }
+    
     private func stopService() {
         if let service = boxService {
             do {
@@ -60,18 +73,6 @@ public class VPNTunnel: NEPacketTunnelProvider {
         }
         if let platformInterface {
             platformInterface.reset()
-        }
-    }
-
-    override open func sleep() async {
-        if let boxService {
-            boxService.pause()
-        }
-    }
-
-    override open func wake() {
-        if let boxService {
-            boxService.wake()
         }
     }
 }

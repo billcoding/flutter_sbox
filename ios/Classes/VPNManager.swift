@@ -2,27 +2,23 @@
 //  VPNManaget.swift
 //  flutter_sbox
 //
-//  Created by local on 2024/9/8.
+//  Created by local on 2024/9/10.
 //
 
-import Foundation
+import Libcore
 import NetworkExtension
 
 public class VPNManager {
-    private static let TAG: String = "VPNManager"
+    private static let TAG: String = "Sbox/VPNManager"
     private static var manager: NEVPNManager = .shared()
     public static var started: Bool = false
+    
     private static func debug(str: String) {
-        debugPrint("\(TAG) \(str)")
+        // debugPrint("\(TAG) \(str)")
     }
-
-    private static func load() async throws {
+    
+    private static func configure() async throws {
         do {
-            let managers = try await NETunnelProviderManager.loadAllFromPreferences()
-            if let manager = managers.first {
-                self.manager = manager
-                return
-            }
             let newManager = NETunnelProviderManager()
             let protoc = NETunnelProviderProtocol()
             protoc.serverAddress = "localhost"
@@ -35,31 +31,22 @@ public class VPNManager {
             debug(str: "load error: \(error.localizedDescription)")
         }
     }
-
-    private static func enable() async throws {
-        manager.isEnabled = true
+    
+    public static func connect() async {
+        guard !started else { return }
         do {
-            try await manager.saveToPreferences()
-            try await manager.loadFromPreferences()
-        } catch {
-            debug(str: "enable error: \(error.localizedDescription)")
-        }
-    }
-
-    public static func connect(with config: String, disableMemoryLimit: Bool = false) async {
-        guard started == false else { return }
-        do {
-            try await enable()
-            try manager.connection.startVPNTunnel(options: [
-                "Config": config as NSString,
-                "DisableMemoryLimit": (disableMemoryLimit ? "YES" : "NO") as NSString,
-            ])
+            try await configure()
+            let options: [String: NSString] = [
+                "Config": MobileBuildConfig(defaultOptionJson, defaultConfigJson, nil) as NSString,
+                "DisableMemoryLimit": "NO" as NSString
+            ]
+            try manager.connection.startVPNTunnel(options: options)
             started = true
         } catch {
-            debug(str: "connect error: \(error.localizedDescription)")
+            debug(str: "Connection error: \(error.localizedDescription)")
         }
     }
-
+    
     public static func disconnect() {
         guard started else { return }
         manager.connection.stopVPNTunnel()

@@ -20,12 +20,11 @@ The flutter_sbox plugin for Flutter
   # Flutter.framework does not contain a i386 slice.
   s.pod_target_xcconfig = { 'DEFINES_MODULE' => 'YES', 'EXCLUDED_ARCHS[sdk=iphonesimulator*]' => 'i386' }
   s.swift_version = '5.0'
-  s.vendored_frameworks = 'Frameworks/Libcore.xcframework'
-  
-  # 添加系统库作为依赖
-  # libresolv.tbd
-  s.xcconfig = {
-      'OTHER_LDFLAGS' => '-lresolv'
-  }
-  
+
+  # s.vendored_frameworks = 'VendoredFrameworks/Libcore.xcframework'
+
+  # fixed libresolv.tbd
+  # s.xcconfig = { 
+  #   'OTHER_LDFLAGS' => '-lresolv' 
+  # }
 end

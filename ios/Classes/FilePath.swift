@@ -2,10 +2,8 @@
 //  FilePath.swift
 //  flutter_sbox
 //
-//  Created by local on 2024/9/8.
+//  Created by local on 2024/9/10.
 //
-
-import Foundation
 
 public enum FilePath {
     public static let packageName = Bundle.main.infoDictionary?["BASE_BUNDLE_IDENTIFIER"] as? String ?? "unknown"

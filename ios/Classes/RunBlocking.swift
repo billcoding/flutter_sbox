@@ -1,11 +1,10 @@
 //
 //  Extension+RunBlocking.swift
-//  SingBoxPacketTunnel
+//  flutter_sbox
 //
-//  Created by GFWFighter on 7/25/1402 AP.
+//  Created by local on 2024/9/10.
 //
 
-import Foundation
 import Libcore
 import NetworkExtension
 

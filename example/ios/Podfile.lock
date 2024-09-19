@@ -2,27 +2,21 @@ PODS:
   - Flutter (1.0.0)
   - flutter_sbox (0.0.1):
     - Flutter
-  - integration_test (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
   - flutter_sbox (from `.symlinks/plugins/flutter_sbox/ios`)
-  - integration_test (from `.symlinks/plugins/integration_test/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
   flutter_sbox:
     :path: ".symlinks/plugins/flutter_sbox/ios"
-  integration_test:
-    :path: ".symlinks/plugins/integration_test/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_sbox: ff515df8667ddb874089e588fd6c51adcceaea10
-  integration_test: ce0a3ffa1de96d1a89ca0ac26fca7ea18a749ef4
+  flutter_sbox: 4f256412e8c4696e3ba9eb3c8583cf65daab657b
 
-PODFILE CHECKSUM: a57f30d18f102dd3ce366b1d62a55ecbef2158e5
+PODFILE CHECKSUM: d552753a85c6a8383743843ef42302ba3200ef3c
 
 COCOAPODS: 1.15.2
