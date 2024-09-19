@@ -37,8 +37,8 @@ flutter:
       android:
         package: com.billcoding.flutter_sbox
         pluginClass: FlutterSboxPlugin
-      ios:
-        pluginClass: FlutterSboxPlugin
+      # ios:
+      #   pluginClass: FlutterSboxPlugin
       macos:
         pluginClass: FlutterSboxPlugin
       windows:
