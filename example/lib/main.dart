@@ -15,9 +15,17 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   bool started = false;
+  int upLink = 0;
+  int downLink = 0;
 
   Future refresh() async {
     started = await FlutterSbox.serviceStarted();
+    setState(() {});
+  }
+
+  Future links() async {
+    upLink = await FlutterSbox.upLink();
+    downLink = await FlutterSbox.downLink();
     setState(() {});
   }
 
@@ -35,14 +43,15 @@ class _MyAppState extends State<MyApp> {
               TextButton(
                 child: const Text("Start"),
                 onPressed: () async {
+                  await FlutterSbox.setOptionJson(optionsJson);
                   await FlutterSbox.setConfigJson(configJson);
-                  await FlutterSbox.start();
+                  await FlutterSbox.startService();
                 },
               ),
               TextButton(
                 child: const Text("Stop"),
                 onPressed: () async {
-                  await FlutterSbox.stop();
+                  await FlutterSbox.stopService();
                 },
               ),
               Text('Current: ${started ? "started" : "stopped"}'),
@@ -50,6 +59,13 @@ class _MyAppState extends State<MyApp> {
                 child: const Text("Refresh"),
                 onPressed: () async {
                   await refresh();
+                },
+              ),
+              Text('Links: ↑${upLink} B/s ↓${downLink} B/s'),
+              TextButton(
+                child: const Text("Links"),
+                onPressed: () async {
+                  await links();
                 },
               ),
             ],
@@ -60,18 +76,94 @@ class _MyAppState extends State<MyApp> {
   }
 }
 
+const optionsJson = """
+{
+    "region": "cn",
+    "block-ads": false,
+    "execute-config-as-is": false,
+    "log-level": "warn",
+    "resolve-destination": false,
+    "ipv6-mode": "ipv4_only",
+    "remote-dns-address": "udp://1.1.1.1",
+    "remote-dns-domain-strategy": "",
+    "direct-dns-address": "223.5.5.5",
+    "direct-dns-domain-strategy": "",
+    "mixed-port": 12334,
+    "tproxy-port": 12335,
+    "local-dns-port": 16450,
+    "tun-implementation": "mixed",
+    "mtu": 9000,
+    "strict-route": true,
+    "connection-test-url": "http://connectivitycheck.gstatic.com/generate_204",
+    "url-test-interval": 600,
+    "enable-clash-api": true,
+    "clash-api-port": 16756,
+    "enable-tun": true,
+    "enable-tun-service": false,
+    "set-system-proxy": false,
+    "bypass-lan": false,
+    "allow-connection-from-lan": false,
+    "enable-fake-dns": false,
+    "enable-dns-routing": true,
+    "independent-dns-cache": true,
+    "rules": [],
+    "mux": {
+        "enable": false,
+        "padding": false,
+        "max-streams": 8,
+        "protocol": "h2mux"
+    },
+    "tls-tricks": {
+        "enable-fragment": false,
+        "fragment-size": "10-30",
+        "fragment-sleep": "2-8",
+        "mixed-sni-case": false,
+        "enable-padding": false,
+        "padding-size": "1-1500"
+    },
+    "warp": {
+        "enable": false,
+        "mode": "proxy_over_warp",
+        "wireguard-config": "",
+        "license-key": "",
+        "account-id": "",
+        "access-token": "",
+        "clean-ip": "auto",
+        "clean-port": 0,
+        "noise": "1-3",
+        "noise-size": "10-30",
+        "noise-delay": "10-30",
+        "noise-mode": "m6"
+    },
+    "warp2": {
+        "enable": false,
+        "mode": "proxy_over_warp",
+        "wireguard-config": "",
+        "license-key": "",
+        "account-id": "",
+        "access-token": "",
+        "clean-ip": "auto",
+        "clean-port": 0,
+        "noise": "1-3",
+        "noise-size": "10-30",
+        "noise-delay": "10-30",
+        "noise-mode": "m6"
+    }
+}
+""";
+
 const configJson = """
 {
     "outbounds": [
       {
         "type": "vless",
         "tag": "vless-in",
-        "server": "your.server.com",
+        "server": "xrayus.rwscode.com",
         "server_port": 443,
-        "uuid": "85c4c766-3021-4e6e-a344-7d94baa391c6",
+        "uuid": "d6317ce7-b1ce-44b9-a9c7-1d5fe88bb6e0",
         "tls": {
           "enabled": true,
-          "server_name": "your.server.com",
+          "server_name": "xrayus.rwscode.com",
           "utls": {
             "enabled": true,
             "fingerprint": "chrome"
@@ -79,7 +171,7 @@ const configJson = """
         },
         "transport": {
           "type": "ws",
-          "path": "/aaf18b23f0c3/",
+          "path": "/bdf09aa45/",
           "early_data_header_name": "Sec-WebSocket-Protocol"
         },
         "packet_encoding": "xudp"

@@ -1,22 +1,16 @@
 PODS:
   - Flutter (1.0.0)
-  - flutter_sbox (0.0.1):
-    - Flutter
 
 DEPENDENCIES:
   - Flutter (from `Flutter`)
-  - flutter_sbox (from `.symlinks/plugins/flutter_sbox/ios`)
 
 EXTERNAL SOURCES:
   Flutter:
     :path: Flutter
-  flutter_sbox:
-    :path: ".symlinks/plugins/flutter_sbox/ios"
 
 SPEC CHECKSUMS:
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_sbox: 4f256412e8c4696e3ba9eb3c8583cf65daab657b
 
-PODFILE CHECKSUM: d552753a85c6a8383743843ef42302ba3200ef3c
+PODFILE CHECKSUM: 72d0390e74490817d8dde8590566b5b189472c7d
 
 COCOAPODS: 1.15.2

@@ -12,6 +12,7 @@ import io.nekohasekai.libbox.BoxService;
 import io.nekohasekai.libbox.Libbox;
 import io.nekohasekai.libbox.PlatformInterface;
 import io.nekohasekai.libbox.TunOptions;
+import io.nekohasekai.mobile.Mobile;
 
 public class VpnService extends android.net.VpnService {
 
@@ -20,14 +21,9 @@ public class VpnService extends android.net.VpnService {
     private static VpnService instance;
     private BoxService boxService;
     private static boolean initialized = false;
-    private static boolean started = false;
 
     public synchronized static void stop() {
         Log.d(TAG, "stop start");
-        if (!started) {
-            Log.d(TAG, "stop start");
-            return;
-        }
         if (instance != null) {
             instance.onDestroy();
             System.gc();
@@ -35,15 +31,8 @@ public class VpnService extends android.net.VpnService {
         Log.d(TAG, "stop end");
     }
 
-    public synchronized static void setStarted(boolean value) {
-        Log.d(TAG, "setStarted start");
-        Log.d(TAG, "setStarted value:" + value);
-        started = value;
-        Log.d(TAG, "setStarted end");
-    }
-
     public synchronized static boolean serviceStarted() {
-        return started;
+        return Mobile.serviceStarted();
     }
 
     @Override
@@ -71,7 +60,8 @@ public class VpnService extends android.net.VpnService {
             }
             boxService = null;
         }
-        setStarted(false);
+        Mobile.closeCommandServer();
+        Mobile.stop();
         Log.d(TAG, "onDestroy ...");
     }
 
@@ -111,16 +101,18 @@ public class VpnService extends android.net.VpnService {
     public synchronized int onStartCommand(Intent intent, int flags, int startId) {
         Log.d(TAG, "onStartCommand start");
         Log.d(TAG, "onStartCommand intent: " + intent + " flags: " + flags + " startId: " + startId);
-        if (started) {
+        if (Mobile.serviceStarted()) {
             Log.d(TAG, "onStartCommand service was started, skipped.");
             return START_NOT_STICKY;
         }
         try {
             startInit();
             Libbox.setMemoryLimit(true);
-            boxService = Libbox.newService(Sbox.getAllJson(), platformInterface);
+            String allJson = Mobile.getAllJson();
+            boxService = Libbox.newService(allJson, platformInterface);
             boxService.start();
-            setStarted(true);
+            Mobile.startCommandServer(boxService);
+            Mobile.start();
         } catch (Exception ex) {
             Log.d(TAG, "onStartCommand: " + Objects.requireNonNull(ex.getMessage()));
         }

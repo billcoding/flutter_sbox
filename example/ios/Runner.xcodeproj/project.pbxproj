@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		2F10E9D0AF7915A1752897AC /* Pods_PacketTunnelProvider.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6B7E922E2526A21C4DB3C85 /* Pods_PacketTunnelProvider.framework */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		42299A4A52F4FA78A09035BD /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 81F77AD3DFE7C3C012AAC6F5 /* Pods_Runner.framework */; };
 		72C3431D2C908D40008E0080 /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72C342E82C906A3F008E0080 /* NetworkExtension.framework */; };
@@ -45,13 +44,10 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		00A5525CBD366C16F32A9966 /* Pods-PacketTunnelProvider.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnelProvider.debug.xcconfig"; path = "Target Support Files/Pods-PacketTunnelProvider/Pods-PacketTunnelProvider.debug.xcconfig"; sourceTree = "<group>"; };
 		0C032882BBC445836341565C /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
-		110B3B522613868273599A6B /* Pods-PacketTunnelProvider.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnelProvider.release.xcconfig"; path = "Target Support Files/Pods-PacketTunnelProvider/Pods-PacketTunnelProvider.release.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		57AD0AC867F71D17B1F0ABDA /* Pods-PacketTunnelProvider.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PacketTunnelProvider.profile.xcconfig"; path = "Target Support Files/Pods-PacketTunnelProvider/Pods-PacketTunnelProvider.profile.xcconfig"; sourceTree = "<group>"; };
 		72298B8D2C90A8B4000A8CEE /* Libcore.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Libcore.xcframework; path = .symlinks/plugins/flutter_sbox/ios/../../../../../../ios/Frameworks/Libcore.xcframework; sourceTree = "<group>"; };
 		72C342E82C906A3F008E0080 /* NetworkExtension.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = NetworkExtension.framework; path = System/Library/Frameworks/NetworkExtension.framework; sourceTree = SDKROOT; };
 		72C342F72C906B03008E0080 /* flutter_sbox.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = flutter_sbox.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,7 +79,6 @@
 		9ECDD3978ABA4165D10ED901 /* Pods_RunnerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunnerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C9C3A822F961AA46A987BBEE /* Pods-RunnerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.release.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.release.xcconfig"; sourceTree = "<group>"; };
 		E4CA08F257CF5B287FB9F650 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
-		E6B7E922E2526A21C4DB3C85 /* Pods_PacketTunnelProvider.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PacketTunnelProvider.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		ED33A282CE320436FD5BCA20 /* Pods-RunnerTests.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.profile.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.profile.xcconfig"; sourceTree = "<group>"; };
 		FFABF9FA5ACD8D5CBB6F4A99 /* Pods-RunnerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunnerTests.debug.xcconfig"; path = "Target Support Files/Pods-RunnerTests/Pods-RunnerTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -94,7 +89,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				72C3431D2C908D40008E0080 /* NetworkExtension.framework in Frameworks */,
-				2F10E9D0AF7915A1752897AC /* Pods_PacketTunnelProvider.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +177,6 @@
 				81F77AD3DFE7C3C012AAC6F5 /* Pods_Runner.framework */,
 				9ECDD3978ABA4165D10ED901 /* Pods_RunnerTests.framework */,
 				72C342E82C906A3F008E0080 /* NetworkExtension.framework */,
-				E6B7E922E2526A21C4DB3C85 /* Pods_PacketTunnelProvider.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -197,9 +190,6 @@
 				FFABF9FA5ACD8D5CBB6F4A99 /* Pods-RunnerTests.debug.xcconfig */,
 				C9C3A822F961AA46A987BBEE /* Pods-RunnerTests.release.xcconfig */,
 				ED33A282CE320436FD5BCA20 /* Pods-RunnerTests.profile.xcconfig */,
-				00A5525CBD366C16F32A9966 /* Pods-PacketTunnelProvider.debug.xcconfig */,
-				110B3B522613868273599A6B /* Pods-PacketTunnelProvider.release.xcconfig */,
-				57AD0AC867F71D17B1F0ABDA /* Pods-PacketTunnelProvider.profile.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -211,7 +201,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 72C343262C908D40008E0080 /* Build configuration list for PBXNativeTarget "PacketTunnelProvider" */;
 			buildPhases = (
-				BF44C851B21C745B05069280 /* [CP] Check Pods Manifest.lock */,
 				72C343182C908D40008E0080 /* Sources */,
 				72C343192C908D40008E0080 /* Frameworks */,
 				72C3431A2C908D40008E0080 /* Resources */,
@@ -234,7 +223,6 @@
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
-				D15DFC36AAF67706FC27E5FC /* [CP] Embed Pods Frameworks */,
 				72C342F22C906A3F008E0080 /* Embed Foundation Extensions */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
 			);
@@ -361,45 +349,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
-		};
-		BF44C851B21C745B05069280 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-PacketTunnelProvider-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		D15DFC36AAF67706FC27E5FC /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -530,7 +479,6 @@
 		};
 		72C343272C908D40008E0080 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 00A5525CBD366C16F32A9966 /* Pods-PacketTunnelProvider.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -571,7 +519,6 @@
 		};
 		72C343282C908D40008E0080 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 110B3B522613868273599A6B /* Pods-PacketTunnelProvider.release.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -609,7 +556,6 @@
 		};
 		72C343292C908D40008E0080 /* Profile */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 57AD0AC867F71D17B1F0ABDA /* Pods-PacketTunnelProvider.profile.xcconfig */;
 			buildSettings = {
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

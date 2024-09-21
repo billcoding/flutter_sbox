@@ -40,7 +40,6 @@ public class Sbox {
 
     public synchronized static void start() {
         Log.d(TAG, "start start");
-        setAllJson(getOptionJson(), getConfigJson());
         Intent intent = VpnService.prepare(activity);
         if (intent != null) {
             vpnServiceLauncher.launch(intent);
@@ -86,42 +85,23 @@ public class Sbox {
 
     public static void setOptionJson(String currentOptionJson) {
         Log.d(TAG, "setOptionJson start");
-        if (currentOptionJson != null && !currentOptionJson.isEmpty()) {
-            optionJson = currentOptionJson;
-            Log.d(TAG, "setOptionJson current: " + optionJson);
+        try {
+            Mobile.setOptionJson(currentOptionJson);
+            Log.d(TAG, "setOptionJson current: " + currentOptionJson);
+        } catch (Exception ex) {
+            Log.d(TAG, "setOptionJson error:" + ex.getMessage());
         }
         Log.d(TAG, "setOptionJson end");
     }
 
-    private static String getOptionJson() {
-        return optionJson;
-    }
-
     public static void setConfigJson(String currentConfigJson) {
         Log.d(TAG, "setConfigJson start");
-        if (currentConfigJson != null && !currentConfigJson.isEmpty()) {
-            configJson = currentConfigJson;
-            Log.d(TAG, "setConfigJson current: " + configJson);
+        try {
+            Mobile.setConfigJson(currentConfigJson);
+            Log.d(TAG, "setConfigJson current: " + currentConfigJson);
+        } catch (Exception ex) {
+            Log.d(TAG, "setConfigJson error:" + ex.getMessage());
         }
         Log.d(TAG, "setConfigJson end");
-    }
-
-    private static String getConfigJson() {
-        return configJson;
-    }
-
-    public static void setAllJson(String optionJson, String configJson) {
-        Log.d(TAG, "setAllJson start");
-        try {
-            allJson = Mobile.buildConfig(optionJson, configJson);
-            Log.d(TAG, "setAllJson current: " + allJson);
-        } catch (Exception ex) {
-            Log.d(TAG, "setAllJson " + ex.getMessage());
-        }
-        Log.d(TAG, "setAllJson end");
-    }
-
-    public static String getAllJson() {
-        return allJson;
     }
 }

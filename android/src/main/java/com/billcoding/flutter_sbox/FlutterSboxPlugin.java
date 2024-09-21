@@ -6,6 +6,7 @@ import io.flutter.Log;
 import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.plugin.common.MethodCall;
 import io.flutter.plugin.common.MethodChannel;
+import io.nekohasekai.mobile.Mobile;
 
 public final class FlutterSboxPlugin implements FlutterPlugin, MethodChannel.MethodCallHandler {
     private MethodChannel methodChannel;
@@ -50,6 +51,12 @@ public final class FlutterSboxPlugin implements FlutterPlugin, MethodChannel.Met
             case "setConfigJson":
                 Sbox.setConfigJson(argumentsString);
                 result.success(true);
+                break;
+            case "upLink":
+                result.success(Mobile.upLink());
+                break;
+            case "downLink":
+                result.success(Mobile.downLink());
                 break;
         }
         Log.d(TAG, "onMethodCall end");
