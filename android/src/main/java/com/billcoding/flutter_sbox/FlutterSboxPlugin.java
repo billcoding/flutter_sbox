@@ -42,14 +42,14 @@ public final class FlutterSboxPlugin implements FlutterPlugin, MethodChannel.Met
                 result.success(true);
                 break;
             case "serviceStarted":
-                result.success(Sbox.serviceStarted());
+                result.success(Mobile.serviceStarted());
                 break;
             case "setOptionJson":
-                Sbox.setOptionJson(argumentsString);
+                Mobile.setOptionJson(argumentsString);
                 result.success(true);
                 break;
             case "setConfigJson":
-                Sbox.setConfigJson(argumentsString);
+                Mobile.setConfigJson(argumentsString);
                 result.success(true);
                 break;
             case "upLink":

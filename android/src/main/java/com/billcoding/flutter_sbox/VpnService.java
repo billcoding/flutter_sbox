@@ -31,10 +31,6 @@ public class VpnService extends android.net.VpnService {
         Log.d(TAG, "stop end");
     }
 
-    public synchronized static boolean serviceStarted() {
-        return Mobile.serviceStarted();
-    }
-
     @Override
     public void onCreate() {
         super.onCreate();

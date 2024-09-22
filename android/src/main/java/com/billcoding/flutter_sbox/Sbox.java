@@ -17,9 +17,14 @@ public class Sbox {
     private static Application application;
     private static ActivityResultLauncher<Intent> vpnServiceLauncher;
     private static String vpnSession = "Sbox";
-    private static String optionJson = Conf.INSTANCE.getDefaultOptionJson();
-    private static String configJson = null;
-    private static String allJson = null;
+
+    public static Application getApplication() {
+        return application;
+    }
+
+    public static String getVpnSession() {
+        return vpnSession;
+    }
 
     public synchronized static void init(Application application, FragmentActivity activity, String vpnSession) {
         Log.d(TAG, "init start");
@@ -66,42 +71,5 @@ public class Sbox {
         Log.d(TAG, "stopService start");
         VpnService.stop();
         Log.d(TAG, "stopService end");
-    }
-
-    public synchronized static boolean serviceStarted() {
-        Log.d(TAG, "serviceStarted start");
-        final boolean serviceStarted = VpnService.serviceStarted();
-        Log.d(TAG, "serviceStarted end");
-        return serviceStarted;
-    }
-
-    public static Application getApplication() {
-        return application;
-    }
-
-    public static String getVpnSession() {
-        return vpnSession;
-    }
-
-    public static void setOptionJson(String currentOptionJson) {
-        Log.d(TAG, "setOptionJson start");
-        try {
-            Mobile.setOptionJson(currentOptionJson);
-            Log.d(TAG, "setOptionJson current: " + currentOptionJson);
-        } catch (Exception ex) {
-            Log.d(TAG, "setOptionJson error:" + ex.getMessage());
-        }
-        Log.d(TAG, "setOptionJson end");
-    }
-
-    public static void setConfigJson(String currentConfigJson) {
-        Log.d(TAG, "setConfigJson start");
-        try {
-            Mobile.setConfigJson(currentConfigJson);
-            Log.d(TAG, "setConfigJson current: " + currentConfigJson);
-        } catch (Exception ex) {
-            Log.d(TAG, "setConfigJson error:" + ex.getMessage());
-        }
-        Log.d(TAG, "setConfigJson end");
     }
 }
