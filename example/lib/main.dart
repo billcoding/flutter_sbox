@@ -17,6 +17,7 @@ class _MyAppState extends State<MyApp> {
   bool started = false;
   int upLink = 0;
   int downLink = 0;
+  Timer? timer;
 
   Future refresh() async {
     started = await FlutterSbox.serviceStarted();
@@ -27,6 +28,18 @@ class _MyAppState extends State<MyApp> {
     upLink = await FlutterSbox.upLink();
     downLink = await FlutterSbox.downLink();
     setState(() {});
+  }
+
+  Future startTimer() async {
+    timer = Timer.periodic(const Duration(seconds: 1), (timer) async {
+      upLink = await FlutterSbox.upLink();
+      downLink = await FlutterSbox.downLink();
+      setState(() {});
+    });
+  }
+
+  Future stopTimer() async {
+    timer?.cancel();
   }
 
   @override
@@ -46,12 +59,14 @@ class _MyAppState extends State<MyApp> {
                   await FlutterSbox.setOptionJson(optionsJson);
                   await FlutterSbox.setConfigJson(configJson);
                   await FlutterSbox.startService();
+                  await startTimer();
                 },
               ),
               TextButton(
                 child: const Text("Stop"),
                 onPressed: () async {
                   await FlutterSbox.stopService();
+                  await stopTimer();
                 },
               ),
               Text('Current: ${started ? "started" : "stopped"}'),
@@ -158,12 +173,12 @@ const configJson = """
       {
         "type": "vless",
         "tag": "vless-in",
-        "server": "xrayus.rwscode.com",
+        "server": "server.yours.com",
         "server_port": 443,
-        "uuid": "d6317ce7-b1ce-44b9-a9c7-1d5fe88bb6e0",
+        "uuid": "e8f0c5a4-2f0e-4a1b-81b4-2f8b9aee7048",
         "tls": {
           "enabled": true,
-          "server_name": "xrayus.rwscode.com",
+          "server_name": "server.yours.com",
           "utls": {
             "enabled": true,
             "fingerprint": "chrome"
@@ -171,7 +186,7 @@ const configJson = """
         },
         "transport": {
           "type": "ws",
-          "path": "/bdf09aa45/",
+          "path": "/b20gc3RyaW5n/",
           "early_data_header_name": "Sec-WebSocket-Protocol"
         },
         "packet_encoding": "xudp"

@@ -56,7 +56,6 @@ public class VpnService extends android.net.VpnService {
             }
             boxService = null;
         }
-        Mobile.closeCommandServer();
         Mobile.stop();
         Log.d(TAG, "onDestroy ...");
     }
@@ -107,8 +106,7 @@ public class VpnService extends android.net.VpnService {
             String allJson = Mobile.getAllJson();
             boxService = Libbox.newService(allJson, platformInterface);
             boxService.start();
-            Mobile.startCommandServer(boxService);
-            Mobile.start();
+            Mobile.start(boxService, true);
         } catch (Exception ex) {
             Log.d(TAG, "onStartCommand: " + Objects.requireNonNull(ex.getMessage()));
         }
