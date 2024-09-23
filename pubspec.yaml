@@ -39,10 +39,10 @@ flutter:
         pluginClass: FlutterSboxPlugin
       # ios:
       #   pluginClass: FlutterSboxPlugin
-      macos:
-        pluginClass: FlutterSboxPlugin
-      windows:
-        pluginClass: FlutterSboxPluginCApi
+      # macos:
+      #   pluginClass: FlutterSboxPlugin
+      # windows:
+      #   pluginClass: FlutterSboxPluginCApi
 
   # To add assets to your plugin package, add an assets section, like this:
   # assets:

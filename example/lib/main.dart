@@ -173,6 +173,34 @@ const configJson = """
       {
         "type": "vless",
         "tag": "vless-in",
+        "server": "xrayus.rwscode.com",
+        "server_port": 443,
+        "uuid": "d6317ce7-b1ce-44b9-a9c7-1d5fe88bb6e0",
+        "tls": {
+          "enabled": true,
+          "server_name": "xrayus.rwscode.com",
+          "utls": {
+            "enabled": true,
+            "fingerprint": "chrome"
+          }
+        },
+        "transport": {
+          "type": "ws",
+          "path": "/bdf09aa45/",
+          "early_data_header_name": "Sec-WebSocket-Protocol"
+        },
+        "packet_encoding": "xudp"
+      }
+    ]
+  }
+""";
+
+const configJson000 = """
+{
+    "outbounds": [
+      {
+        "type": "vless",
+        "tag": "vless-in",
         "server": "server.yours.com",
         "server_port": 443,
         "uuid": "e8f0c5a4-2f0e-4a1b-81b4-2f8b9aee7048",
