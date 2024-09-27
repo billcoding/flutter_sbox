@@ -24,12 +24,6 @@ class _MyAppState extends State<MyApp> {
     setState(() {});
   }
 
-  Future links() async {
-    upLink = await FlutterSbox.upLink();
-    downLink = await FlutterSbox.downLink();
-    setState(() {});
-  }
-
   Future startTimer() async {
     timer = Timer.periodic(const Duration(seconds: 1), (timer) async {
       upLink = await FlutterSbox.upLink();
@@ -77,12 +71,6 @@ class _MyAppState extends State<MyApp> {
                 },
               ),
               Text('Links: ↑${upLink} B/s ↓${downLink} B/s'),
-              TextButton(
-                child: const Text("Links"),
-                onPressed: () async {
-                  await links();
-                },
-              ),
             ],
           ),
         ),
@@ -168,34 +156,6 @@ const optionsJson = """
 """;
 
 const configJson = """
-{
-    "outbounds": [
-      {
-        "type": "vless",
-        "tag": "vless-in",
-        "server": "xrayus.rwscode.com",
-        "server_port": 443,
-        "uuid": "d6317ce7-b1ce-44b9-a9c7-1d5fe88bb6e0",
-        "tls": {
-          "enabled": true,
-          "server_name": "xrayus.rwscode.com",
-          "utls": {
-            "enabled": true,
-            "fingerprint": "chrome"
-          }
-        },
-        "transport": {
-          "type": "ws",
-          "path": "/bdf09aa45/",
-          "early_data_header_name": "Sec-WebSocket-Protocol"
-        },
-        "packet_encoding": "xudp"
-      }
-    ]
-  }
-""";
-
-const configJson000 = """
 {
     "outbounds": [
       {
